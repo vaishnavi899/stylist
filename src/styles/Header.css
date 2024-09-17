@@ -3,60 +3,101 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  background-color: #fff;
-  border-bottom: 1px solid #e0e0e0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0px 20px; /* Decreased height */
+  background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+  border-bottom: 0.1px solid #333;
+  color: white;
+  z-index: 60;
+  position: sticky;
+  top: 0;
+  height: 60px; /* Define the height of the header if not already defined */
+}
+
+/* Logo Styling */
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: "Marck Script", cursive;
 }
 
 .logo img {
-  height: 50px;
-  transition: transform 0.3s ease;
+  height: 30px; /* Adjusted height */
+  border-radius: 50%;
+  border: 3px solid #ff004f; /* Bright border color */
+  object-fit: cover;
+  margin-right: 15px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .logo img:hover {
-  transform: scale(1.1);
+  transform: scale(1.2);
+  box-shadow: 0 8px 16px rgba(255, 0, 79, 0.6);
 }
 
+/* Outfitter Title */
 .title {
-  color: #ff004f;
-  font-size: 26px;
-  font-weight: bold;
-  margin-left: 20px;
+  font-size: 250%; /* Adjusted font size */
+  color: #FEF8E6; /* Bright color */
+  letter-spacing: 2px;
+  margin-left: 15px;
+  line-height: 60px; /* Match this to the header height */
+  display: flex;
+  align-items: center; /* Vertically center the text */
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Header Right Section */
 .header-right {
   display: flex;
   align-items: center;
-}
-
-.search-bar {
-  padding: 8px 12px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  margin-right: 20px;
-  transition: border-color 0.3s ease;
-}
-
-.search-bar:focus {
-  border-color: #ff004f;
-  outline: none;
+  gap: 10px;
 }
 
 /* Navigation Links */
 .nav-link {
-  margin-right: 25px;
-  font-size: 16px;
+  margin-right: 20px;
+  font-size: 22px; /* Increased font size */
   text-decoration: none;
-  color: #333;
-  transition: color 0.3s ease;
+  color: #e0e0e0;
+  transition: color 0.3s ease, transform 0.3s ease;
+  position: relative;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 20px;
 }
 
 .nav-link:hover {
   color: #ff004f;
-  text-decoration: underline;
+  transform: scale(1.1);
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: -5px;
+  left: 0;
+  background-color: #ff004f;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-link:hover::before {
+  visibility: visible;
+  transform: scaleX(1);
 }
 
 /* Profile Info Styling */
@@ -64,7 +105,6 @@
   display: flex;
   align-items: center;
   position: relative;
-  flex-direction: column;
 }
 
 .profile-picture-container {
@@ -74,84 +114,59 @@
 /* Profile Picture */
 .profile-picture {
   border-radius: 50%;
-  width: 50px;
+  width: 50px; /* Increased size */
   height: 50px;
   margin-bottom: 10px;
   cursor: pointer;
+  border: 3px solid #ff004f; /* Bright border color */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hide the user details by default */
+.profile-picture:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(255, 0, 79, 0.5);
+}
+
+/* User Details */
 .user-details {
   display: none;
   flex-direction: column;
-  background-color: rgba(255, 255, 255, 0.9);
-  border: 1px solid #e0e0e0;
+  background-color: rgba(50, 50, 50, 0.95);
+  border: 1px solid #333;
   padding: 10px;
-  border-radius: 5px;
   position: absolute;
-  top: 60px; /* Positioning below the profile picture */
-  left: 0;
+  top: 60px;
+  right: 0;
   white-space: nowrap;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
   z-index: 10;
-  transform-origin: top right;
-  transform: translateX(0); /* Initial transform state */
 }
 
-/* Adjust positioning if profile picture is near the right edge of the screen */
 .profile-info:hover .user-details {
   display: flex;
-  transform: translateX(calc(-100% + 50px)); /* Keep within the screen width */
-}
-
-/* Detect right-edge and shift */
-.profile-info:hover .user-details {
-  display: flex;
-  left: auto; /* Reset the left property */
-  right: 0; /* Align the box with the right side of the profile picture */
-}
-
-.user-details h2, .user-details p {
-  margin: 0;
-  color: #333;
-}
-
-.user-details p {
-  font-size: 14px;
-  color: #666;
 }
 
 /* Login/Logout Button */
-.login-btn, .logout-btn {
-  padding: 10px 20px;
-  background-color: #ff004f;
+.login-btn, .signup-btn, .logout-btn, button {
+  padding: 8px 24px;
+  background-color: #ff004f; /* Bright color for buttons */
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 30px;
   cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  margin-top: 10px; /* Space between picture and button */
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-weight: 600;
 }
 
-.logout-btn:hover {
+.signup-btn {
+  background-color: #ff004f; /* Same as login button */
+}
+
+.login-btn:hover, .signup-btn:hover, .logout-btn:hover {
   background-color: #e00042;
   transform: translateY(-2px);
 }
-.contact-form {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: white;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: auto;
-}
-
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
@@ -166,12 +181,12 @@
   }
 
   .nav-link {
-    margin-right: 15px;
-    font-size: 14px;
+    margin-right: 10px;
+    font-size: 12px; /* Adjusted for mobile */
   }
 
-  .login-btn {
-    padding: 8px 16px;
+  .login-btn, .signup-btn {
+    padding: 0px 20px;
     font-size: 14px;
   }
 }

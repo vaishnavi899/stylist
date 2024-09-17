@@ -2,7 +2,10 @@
 body, html {
   margin: 0;
   padding: 0;
-  font-family: 'Arial', sans-serif;
+}
+body {
+  font-family: 'Dancing Script', cursive;
+
 }
 
 /* Webpage Layout */
@@ -15,19 +18,49 @@ body, html {
 
 /* Hero Section Styling */
 .hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 90vh; /* Adjust the height to your preference */
-  width: 100%; /* Makes sure the hero section takes the full width */
-  background-image: url('C:\Users\singh\stylist - Copy\public\homepage.jpg'); /* Use your relative image path */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: relative;
-  margin: 0 auto; /* Centers the hero section */
-  padding: 0 20px; /* Adds some padding to the sides */
+  .hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures space between image and video */
+    height: 70vh;
+    background-color: #ACD8D6;
+    position: relative;
+    margin: 0 auto;
+  }
+  
+  /* Background image handled in this div */
+  .hero-image {
+    flex: 1; /* Takes available space */
+    height: 100%;
+    background-image: url('C:/Users/Divyanshi Gupta/stylist/public/homebanner-title-removebg-preview.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: 23% center; /* Adjust image position */
+  }
+
+
+  
+  /* Video styling */
+  .hero-video {
+    flex: 1; /* Takes the same amount of space as the image */
+    display: flex;
+    justify-content: center;
+    border-radius: 5%;
+    align-items: center;
+    padding-right: 40px;
+
+  }
+  
+  
+  .hero-video video {
+    border-radius: 10px;
+    max-width: 100%;
+    height: auto;
+  }
+  
 }
+
+
 
 .hero::before {
   content: '';
@@ -36,7 +69,6 @@ body, html {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text visibility */
   z-index: 1;
 }
 
@@ -46,6 +78,7 @@ body, html {
   text-align: center;
   max-width: 800px; /* Optional: Restricts the width of text content for readability */
   margin: 0 auto;
+  padding-left: 100px;
 }
 
 .hero-content h1 {
@@ -58,16 +91,65 @@ body, html {
   margin-bottom: 30px;
 }
 
-.cta-button {
-  text-decoration: none;
-  color: #ffffff;
-  background-color: #ff467e;
-  padding: 15px 30px;
-  border-radius: 5px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+
+/* Button Container Styling */
+.button-container {
+  text-align: center;
+  margin-top: 30px;
 }
 
-.cta-button:hover {
-  background-color: #ff2b60;
+.button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #ff004f;
+  border: none;
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: #e00042;
+  transform: translateY(-2px);
+}
+
+/* Media Section (Image on Left, Video on Right) */
+.media-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 40px auto; /* Centers the section horizontally */
+}
+
+.image-container {
+  flex: 1;
+  padding-right: 150px;
+  padding-left: 30px;
+  
+}
+
+.fashion-image {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.video-container  {
+  flex: 1;
+  border-radius: 10px;
+  padding-left: 20px;
+ padding-top: 0;
+
+  
+}
+
+.hover-video {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
 }

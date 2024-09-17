@@ -12,14 +12,15 @@ function Header() {
   return (
     <header className="header">
       <div className="logo">
-        <h1 className="title">GET STYLED</h1>
+        {/* Insert the logo image next to the title */}
+       {/* <img src={process.env.PUBLIC_URL + '/Outfitter (1).png'} alt="Logo" className="header-logo" />*/}
+        <h1 className="title">Outfitter</h1>
       </div>
       <div className="header-right">
-        <a href="/virtual-try-on" className="nav-link">Virtual Try On</a>
-        <a href="/contact-us" className="nav-link">Contact Us</a> {/* Added Contact Us link */}
-        <input type="text" className="search-bar" placeholder="Search..." />
+        <a href="/virtual-try-on" className="nav-link">Home</a>
+        <a href="/contact-us" className="nav-link">About Us</a> 
+        <a href="/contact-us" className="nav-link">Contact Us</a> 
       </div>
-      {/* Conditionally render Login or Logout button based on authentication */}
       {isAuthenticated ? (
         <div className="profile-info">
           <div className="profile-picture-container">
